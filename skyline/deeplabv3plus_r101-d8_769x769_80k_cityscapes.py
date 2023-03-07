@@ -156,7 +156,7 @@ data = dict(
 log_config = dict(
     interval=50, hooks=[dict(type='TextLoggerHook', by_epoch=False)])
 dist_params = dict(backend='nccl')
-mp_start_method = dict(mp_start_method='fork')
+mp_start_method = 'fork'
 log_level = 'INFO'
 load_from = None
 resume_from = None
