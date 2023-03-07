@@ -42,7 +42,8 @@ model = dict(
             type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
     train_cfg=dict(),
     test_cfg=dict(mode='slide', crop_size=(769, 769), stride=(513, 513)))
-dataset_type = 'CityscapesDataset'
+#dataset_type = 'CityscapesDataset'
+dataset_type = 'CustomDataset'
 data_root = '/storage/leo/datasets/Frederick_seg/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
@@ -84,7 +85,8 @@ data = dict(
     samples_per_gpu=2,
     workers_per_gpu=2,
     train=dict(
-        type='CityscapesDataset',
+        #type='CityscapesDataset',
+        type='CustomDataset',
         data_root='/storage/leo/datasets/Frederick_seg/',
         img_dir='images',
         ann_dir='labels',
@@ -104,7 +106,8 @@ data = dict(
             dict(type='Collect', keys=['img', 'gt_semantic_seg'])
         ]),
     val=dict(
-        type='CityscapesDataset',
+        #type='CityscapesDataset',
+        type='CustomDataset',
         data_root='/storage/leo/datasets/Frederick_seg/',
         img_dir='images',
         ann_dir='labels',
@@ -127,7 +130,8 @@ data = dict(
                 ])
         ]),
     test=dict(
-        type='CityscapesDataset',
+        #type='CityscapesDataset',
+        type='CustomDataset',
         data_root='/storage/leo/datasets/Frederick_seg/',
         img_dir='images',
         ann_dir='labels',
