@@ -50,7 +50,6 @@ crop_size = (769, 769)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations'),
-#    dict(type='Resize', img_scale=(2049, 1025), ratio_range=(0.5, 2.0)),
     dict(type='RandomCrop', crop_size=(769, 769), cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),
     dict(type='PhotoMetricDistortion'),
@@ -86,14 +85,13 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type='CityscapesDataset',
-        data_root = '/storage/leo/datasets/Frederick_seg/',
+        data_root='/storage/leo/datasets/Frederick_seg/',
         img_dir='images',
         ann_dir='labels',
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(type='LoadAnnotations'),
             dict(
-#            type='Resize', img_scale=(2049, 1025), ratio_range=(0.5, 2.0)),
             dict(type='RandomCrop', crop_size=(769, 769), cat_max_ratio=0.75),
             dict(type='RandomFlip', prob=0.5),
             dict(type='PhotoMetricDistortion'),
@@ -108,7 +106,7 @@ data = dict(
         ]),
     val=dict(
         type='CityscapesDataset',
-        data_root = '/storage/leo/datasets/Frederick_seg/',
+        data_root='/storage/leo/datasets/Frederick_seg/',
         img_dir='images',
         ann_dir='labels',
         pipeline=[
@@ -131,7 +129,7 @@ data = dict(
         ]),
     test=dict(
         type='CityscapesDataset',
-        data_root = '/storage/leo/datasets/Frederick_seg/',
+        data_root='/storage/leo/datasets/Frederick_seg/',
         img_dir='images',
         ann_dir='labels',
         pipeline=[
