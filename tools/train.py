@@ -152,6 +152,7 @@ def main():
         distributed = False
     else:
         distributed = True
+        print("distributed", distributed)
         init_dist(args.launcher, **cfg.dist_params)
         # gpu_ids is used to calculate iter when resuming checkpoint
         _, world_size = get_dist_info()

@@ -76,7 +76,6 @@ def train_segmentor(model,
                     timestamp=None,
                     meta=None):
     """Launch segmentor training."""
-    print("cfg.log_level", cfg.log_level)
     logger = get_root_logger(cfg.log_level)
 
     # prepare data loaders
