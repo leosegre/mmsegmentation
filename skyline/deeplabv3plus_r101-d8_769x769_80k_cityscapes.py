@@ -156,7 +156,6 @@ data = dict(
 log_config = dict(
     interval=50, hooks=[dict(type='TextLoggerHook', by_epoch=False)])
 dist_params = dict(backend='nccl')
-mp_start_method = 'spawn'
 log_level = 'INFO'
 load_from = None
 resume_from = None
@@ -168,4 +167,3 @@ lr_config = dict(policy='poly', power=0.9, min_lr=0.0001, by_epoch=False)
 runner = dict(type='IterBasedRunner', max_iters=80000)
 checkpoint_config = dict(by_epoch=False, interval=8000)
 evaluation = dict(interval=8000, metric='mIoU', pre_eval=True)
-workers_per_gpu=2
