@@ -81,7 +81,6 @@ def train_segmentor(model,
     # prepare data loaders
     dataset = dataset if isinstance(dataset, (list, tuple)) else [dataset]
     # The default loader config
-    print("cfg.gpu_ids:", cfg.gpu_ids)
     loader_cfg = dict(
         # cfg.gpus will be ignored if distributed
         num_gpus=len(cfg.gpu_ids),
@@ -106,6 +105,7 @@ def train_segmentor(model,
         find_unused_parameters = cfg.get('find_unused_parameters', False)
         # Sets the `find_unused_parameters` parameter in
         # DDP wrapper
+        print("int(os.environ['LOCAL_RANK'])", int(os.environ['LOCAL_RANK']))
         model = build_ddp(
             model,
             cfg.device,
