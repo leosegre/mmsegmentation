@@ -87,7 +87,7 @@ class CustomDataset(Dataset):
                  img_dir,
                  img_suffix='.jpg',
                  ann_dir=None,
-                 seg_map_suffix='.png',
+                 seg_map_suffix='.mask.png',
                  split=None,
                  data_root=None,
                  test_mode=False,
