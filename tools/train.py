@@ -164,7 +164,7 @@ def main():
     # init the logger before other steps
     timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     log_file = osp.join(cfg.work_dir, f'{timestamp}.log')
-    logger = get_root_logger(log_file=log_file, log_level=cfg.log_level)
+    logger = get_root_logger(log_file=log_file, log_level=cfg.log_level if (int(os.environ['LOCAL_RANK'])==0) else "ERROR")
 
     # set multi-process settings
     setup_multi_processes(cfg, logger)
