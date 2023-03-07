@@ -157,8 +157,6 @@ def main():
         _, world_size = get_dist_info()
         cfg.gpu_ids = range(world_size)
 
-    # set multi-process settings
-    setup_multi_processes(cfg)
     # create work_dir
     mmcv.mkdir_or_exist(osp.abspath(cfg.work_dir))
     # dump config
@@ -168,6 +166,8 @@ def main():
     log_file = osp.join(cfg.work_dir, f'{timestamp}.log')
     logger = get_root_logger(log_file=log_file, log_level=cfg.log_level)
 
+    # set multi-process settings
+    setup_multi_processes(cfg, logger)
 
     # init the meta dict to record some important information such as
     # environment info and seed, which will be logged
