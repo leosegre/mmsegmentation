@@ -165,7 +165,7 @@ def main():
     timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     log_file = osp.join(cfg.work_dir, f'{timestamp}.log')
     logger = get_root_logger(log_file=log_file, log_level=cfg.log_level)
-    print("cfg.log_level", cfg.log_level)
+    print("cfg.log_level", cfg.log_level, "log_file", log_file, "os.environ['LOCAL_RANK']", os.environ["LOCAL_RANK"])
 
     # set multi-process settings
     setup_multi_processes(cfg)
