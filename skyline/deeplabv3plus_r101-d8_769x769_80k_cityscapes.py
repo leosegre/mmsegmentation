@@ -91,7 +91,6 @@ data = dict(
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(type='LoadAnnotations'),
-            dict(
             dict(type='RandomCrop', crop_size=(769, 769), cat_max_ratio=0.75),
             dict(type='RandomFlip', prob=0.5),
             dict(type='PhotoMetricDistortion'),
@@ -103,7 +102,6 @@ data = dict(
             dict(type='Pad', size=(769, 769), pad_val=0, seg_pad_val=255),
             dict(type='DefaultFormatBundle'),
             dict(type='Collect', keys=['img', 'gt_semantic_seg'])
-            )
         ]),
     val=dict(
         type='CityscapesDataset',
