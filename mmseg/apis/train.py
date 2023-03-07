@@ -81,6 +81,7 @@ def train_segmentor(model,
     # prepare data loaders
     dataset = dataset if isinstance(dataset, (list, tuple)) else [dataset]
     # The default loader config
+    print("cfg.gpu_ids:", cfg.gpu_ids)
     loader_cfg = dict(
         # cfg.gpus will be ignored if distributed
         num_gpus=len(cfg.gpu_ids),
