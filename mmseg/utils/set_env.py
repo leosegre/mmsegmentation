@@ -10,6 +10,7 @@ from ..utils import get_root_logger
 
 def setup_multi_processes(cfg):
     """Setup multi-processing environment variables."""
+    logger = get_root_logger()
 
     # set multi-process start method
     if platform.system() != 'Windows':
