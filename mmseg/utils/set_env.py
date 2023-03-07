@@ -8,7 +8,7 @@ import torch.multiprocessing as mp
 from ..utils import get_root_logger
 
 
-def setup_multi_processes(cfg):
+def setup_multi_processes(cfg, logger):
     """Setup multi-processing environment variables."""
     # logger = get_root_logger()
 
