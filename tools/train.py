@@ -152,7 +152,6 @@ def main():
         distributed = False
     else:
         distributed = True
-        print("distributed", distributed)
         init_dist(args.launcher, **cfg.dist_params)
         # gpu_ids is used to calculate iter when resuming checkpoint
         _, world_size = get_dist_info()
@@ -169,6 +168,7 @@ def main():
 
     # set multi-process settings
     setup_multi_processes(cfg)
+    print(int(os.environ['LOCAL_RANK']))
 
     # init the meta dict to record some important information such as
     # environment info and seed, which will be logged
