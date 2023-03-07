@@ -37,6 +37,7 @@ def init_random_seed(seed=None, device='cuda'):
     # some potential bugs. Please refer to
     # https://github.com/open-mmlab/mmdetection/issues/6339
     rank, world_size = get_dist_info()
+    print(rank, world_size)
     seed = np.random.randint(2**31)
     if world_size == 1:
         return seed
@@ -105,7 +106,6 @@ def train_segmentor(model,
         find_unused_parameters = cfg.get('find_unused_parameters', False)
         # Sets the `find_unused_parameters` parameter in
         # DDP wrapper
-        print("int(os.environ['LOCAL_RANK'])", int(os.environ['LOCAL_RANK']))
         model = build_ddp(
             model,
             cfg.device,
