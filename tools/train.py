@@ -169,8 +169,6 @@ def main():
     # set multi-process settings
     setup_multi_processes(cfg)
 
-    print(logger)
-
     # init the meta dict to record some important information such as
     # environment info and seed, which will be logged
     meta = dict()
@@ -192,6 +190,7 @@ def main():
     seed = seed + dist.get_rank() if args.diff_seed else seed
     logger.info(f'Set random seed to {seed}, '
                 f'deterministic: {args.deterministic}')
+    logger.info(f'os.environ["LOCAL_RANK"]: {os.environ["LOCAL_RANK"]}')
     set_random_seed(seed, deterministic=args.deterministic)
     cfg.seed = seed
     meta['seed'] = seed
