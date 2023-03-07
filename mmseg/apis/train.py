@@ -37,7 +37,6 @@ def init_random_seed(seed=None, device='cuda'):
     # some potential bugs. Please refer to
     # https://github.com/open-mmlab/mmdetection/issues/6339
     rank, world_size = get_dist_info()
-    print(rank, world_size)
     seed = np.random.randint(2**31)
     if world_size == 1:
         return seed
@@ -77,6 +76,7 @@ def train_segmentor(model,
                     timestamp=None,
                     meta=None):
     """Launch segmentor training."""
+    print("cfg.log_level", cfg.log_level)
     logger = get_root_logger(cfg.log_level)
 
     # prepare data loaders
