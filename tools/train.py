@@ -164,11 +164,11 @@ def main():
     # init the logger before other steps
     timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     log_file = osp.join(cfg.work_dir, f'{timestamp}.log')
+    print(cfg.log_level)
     logger = get_root_logger(log_file=log_file, log_level=cfg.log_level)
 
     # set multi-process settings
     setup_multi_processes(cfg)
-    print(int(os.environ['LOCAL_RANK']))
 
     # init the meta dict to record some important information such as
     # environment info and seed, which will be logged
