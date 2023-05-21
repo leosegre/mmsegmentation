@@ -80,7 +80,8 @@ def main(args):
         for logit in result:
             result_logits += logit
 
-        pred = result_logits.argmax(axis=1).squeeze()
+        pred_to_show = result_logits.argmax(axis=1)
+        pred = pred_to_show.squeeze()
         img_info = dataset.img_infos[batch_indices[0]]
         file_name = os.path.join(
             tmpdir, img_info['ann']['seg_map'].split(os.path.sep)[-1])
@@ -88,7 +89,7 @@ def main(args):
         file_name_color = os.path.join(
             tmpdir, img_info['ann']['seg_map'].split(os.path.sep)[-1], "color")
         img = np.moveaxis(np.array(data['img'][0]).squeeze(0), -1, 0)
-        model.module.show_result(img, pred, dataset.PALETTE, out_file=file_name_color)
+        model.module.show_result(img, pred_to_show, dataset.PALETTE, out_file=file_name_color)
         prog_bar.update()
 
 
