@@ -87,7 +87,8 @@ def main(args):
         Image.fromarray(pred.astype(np.uint8)).save(file_name)
         file_name_color = os.path.join(
             tmpdir, img_info['ann']['seg_map'].split(os.path.sep)[-1], "color")
-        model.module.show_result(np.array(data['img'][0]), pred, dataset.PALETTE, out_file=file_name_color)
+        img = np.moveaxis(np.array(data['img'][0]).squeeze(0), -1, 0)
+        model.module.show_result(img, pred, dataset.PALETTE, out_file=file_name_color)
         prog_bar.update()
 
 
