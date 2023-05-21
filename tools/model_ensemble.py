@@ -9,6 +9,7 @@ from mmcv.parallel import MMDataParallel
 from mmcv.parallel.scatter_gather import scatter_kwargs
 from mmcv.runner import load_checkpoint, wrap_fp16_model
 from PIL import Image
+from base import show_result
 
 from mmseg.datasets import build_dataloader, build_dataset
 from mmseg.models import build_segmentor
@@ -85,6 +86,9 @@ def main(args):
         file_name = os.path.join(
             tmpdir, img_info['ann']['seg_map'].split(os.path.sep)[-1])
         Image.fromarray(pred.astype(np.uint8)).save(file_name)
+        file_name_color = os.path.join(
+            tmpdir, img_info['ann']['seg_map'].split(os.path.sep)[-1], "color")
+        show_result(data, pred, dataset.PALETTE, out_file=file_name_color)
         prog_bar.update()
 
 
