@@ -80,6 +80,7 @@ def main(args):
         for logit in result:
             result_logits += logit
 
+        print(result_logits.shape)
         pred_to_show = result_logits.argmax(axis=1)
         pred = pred_to_show.squeeze()
         img_info = dataset.img_infos[batch_indices[0]]
