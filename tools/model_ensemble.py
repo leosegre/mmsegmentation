@@ -90,7 +90,7 @@ def main(args):
             tmpdir, img_info['ann']['seg_map'].split(os.path.sep)[-1][:-4] + "_color.png")
         # print(file_name_color)
         # img = np.moveaxis(np.array(data['img'][0]).squeeze(0), 0, -1)
-        print(img_info)
+        print(dataset)
         img = img_info['filename']
         model.module.show_result(img, pred_to_show, dataset.PALETTE, out_file=file_name_color)
         prog_bar.update()
