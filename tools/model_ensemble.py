@@ -87,7 +87,6 @@ def main(args):
         Image.fromarray(pred.astype(np.uint8)).save(file_name)
         file_name_color = os.path.join(
             tmpdir, img_info['ann']['seg_map'].split(os.path.sep)[-1], "color")
-        print(np.array(data['img'][0]).shape)
         model.module.show_result(np.array(data['img'][0]), pred, dataset.PALETTE, out_file=file_name_color)
         prog_bar.update()
 
