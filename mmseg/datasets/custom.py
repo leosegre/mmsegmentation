@@ -113,8 +113,6 @@ class CustomDataset(Dataset):
         self.gt_seg_map_loader = LoadAnnotations(
             reduce_zero_label=reduce_zero_label, **gt_seg_map_loader_cfg)
 
-        print(self.CLASSES)
-
         self.file_client_args = file_client_args
         self.file_client = mmcv.FileClient.infer_client(self.file_client_args)
 
