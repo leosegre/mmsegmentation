@@ -73,7 +73,7 @@ class CustomDataset(Dataset):
             Defaults to ``dict(backend='disk')``.
     """
 
-    CLASSES = ("void", "unclass", "road", "sidewalk", "water", "car", "tree",
+    CLASSES = ("unclass", "road", "sidewalk", "water", "car", "tree",
                "building", "door", "roof", "window")
 
     PALETTE = [[128, 64, 128], [244, 35, 232], [70, 70, 70], [102, 102, 156],
@@ -112,6 +112,7 @@ class CustomDataset(Dataset):
             classes, palette)
         self.gt_seg_map_loader = LoadAnnotations(
             reduce_zero_label=reduce_zero_label, **gt_seg_map_loader_cfg)
+        print(self.CLASSES)
 
         self.file_client_args = file_client_args
         self.file_client = mmcv.FileClient.infer_client(self.file_client_args)
