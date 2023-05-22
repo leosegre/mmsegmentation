@@ -112,6 +112,7 @@ class CustomDataset(Dataset):
             classes, palette)
         self.gt_seg_map_loader = LoadAnnotations(
             reduce_zero_label=reduce_zero_label, **gt_seg_map_loader_cfg)
+
         print(self.CLASSES)
 
         self.file_client_args = file_client_args
