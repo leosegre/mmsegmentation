@@ -89,7 +89,7 @@ def main(args):
         file_name_color = os.path.join(
             tmpdir, img_info['ann']['seg_map'].split(os.path.sep)[-1][:-4] + "_color.png")
         img = cfg.data.test.data_root + cfg.data.test.img_dir + "/" + img_info['filename']
-        model.module.show_result(img, pred_to_show, dataset.PALETTE, out_file=file_name_color)
+        model.module.show_result(img, pred_to_show, dataset.PALETTE, out_file=file_name_color, opacity=0.25)
         prog_bar.update()
 
 
